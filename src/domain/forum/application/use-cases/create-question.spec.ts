@@ -21,5 +21,6 @@ describe('Create Question', () => {
     expect(question).toHaveProperty('id')
     expect(question).toHaveProperty('slug')
     expect(question.title).toEqual('Nova pergunta')
+    expect(inMemoryQuestionsRepository.items[0].id).toEqual(question.id)
   })
 })
