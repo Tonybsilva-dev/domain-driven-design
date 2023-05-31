@@ -18,6 +18,7 @@
   "author": "Antonio Silva <tonybsilvadev@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "^20.2.1",
     "eslint": "^8.41.0",
