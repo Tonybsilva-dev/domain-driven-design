@@ -6,12 +6,14 @@
 
 # Domain Driven Design
 
-📝 Studies on DDD and Clean Architecture.
+📝 Studies on DDD and Clean Architecture (Fórum API).
 
 - [x] Domain Driven Design
 - [x] Clean Architecture
 - [x] Automated Tests
 - [x] Factory
+- [ ] Functional Error Handling
+- [ ] CI/CD
 
 ## How to install?
 
