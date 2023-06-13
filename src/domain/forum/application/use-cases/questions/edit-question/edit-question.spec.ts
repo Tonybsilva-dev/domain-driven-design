@@ -13,24 +13,24 @@ describe('Edit Question', () => {
   })
 
   it('should be able to edit a question', async () => {
-    const newQuestion = MakeQuestion({}, new UniqueEntityID('question-1'));
+    const newQuestion = MakeQuestion({}, new UniqueEntityID('question-1'))
     await inMemoryQuestionsRepository.create(newQuestion)
 
     await sut.execute({
       questionId: 'question-1',
       authorId: newQuestion.authorId.toValue(),
       title: 'question-test',
-      content: 'content-quest'
+      content: 'content-quest',
     })
 
     expect(inMemoryQuestionsRepository.items[0]).toMatchObject({
       title: 'question-test',
-      content: 'content-quest'
+      content: 'content-quest',
     })
   })
 
   it('should not be able to edit a question from another user', async () => {
-    const newQuestion = MakeQuestion({}, new UniqueEntityID('question-1'));
+    const newQuestion = MakeQuestion({}, new UniqueEntityID('question-1'))
     await inMemoryQuestionsRepository.create(newQuestion)
 
     expect(() => {
@@ -38,7 +38,7 @@ describe('Edit Question', () => {
         questionId: 'question-1',
         authorId: 'author-2',
         title: 'question-test',
-        content: 'content-quest'
+        content: 'content-quest',
       })
     }).rejects.toBeInstanceOf(Error)
   })

@@ -15,7 +15,7 @@ describe('Get Question By Slug', () => {
   it('should be able to get a question by slug', async () => {
     const newQuestion = MakeQuestion({
       slug: Slug.create('example-question'),
-    });
+    })
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
@@ -25,6 +25,6 @@ describe('Get Question By Slug', () => {
 
     expect(question.id).toBeTruthy()
     expect(question.title).toEqual(newQuestion.title)
-    expect(question.slug).toEqual(newQuestion.slug);
+    expect(question.slug).toEqual(newQuestion.slug)
   })
 })

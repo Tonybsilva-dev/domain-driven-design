@@ -1,11 +1,11 @@
-import { Question } from '@/domain/forum/enterprise/entities/question';
+import { Question } from '@/domain/forum/enterprise/entities/question'
 import { QuestionsRepository } from '../../../repositories/question-repository'
 
 interface EditQuestionUseCaseRequest {
-  authorId: string,
-  title: string;
+  authorId: string
+  title: string
   content: string
-  questionId: string;
+  questionId: string
 }
 
 interface EditQuestionUseCaseResponse {
@@ -13,31 +13,30 @@ interface EditQuestionUseCaseResponse {
 }
 
 export class EditQuestionUseCase {
-  constructor(private questionRepository: QuestionsRepository) { }
+  constructor(private questionRepository: QuestionsRepository) {}
 
   async execute({
     questionId,
     content,
     title,
-    authorId
+    authorId,
   }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
-
-    const question = await this.questionRepository.findById(questionId);
+    const question = await this.questionRepository.findById(questionId)
 
     if (!question) {
-      throw new Error("Question not found.")
+      throw new Error('Question not found.')
     }
 
     if (authorId !== question.authorId.toString()) {
-      throw new Error("Unauthorized")
+      throw new Error('Unauthorized')
     }
 
-    question.title = title;
-    question.content = content;
+    question.title = title
+    question.content = content
 
     await this.questionRepository.save(question)
     return {
-      question
+      question,
     }
   }
 }

@@ -1,10 +1,10 @@
-import { Answer, AnswerProps } from '@/domain/forum/enterprise/entities/answer';
+import { Answer } from '@/domain/forum/enterprise/entities/answer'
 import { AnswersRepository } from '../../../repositories/answer-repository'
 
 interface EditAnswerUseCaseRequest {
-  authorId: string,
+  authorId: string
   content: string
-  answerId: string;
+  answerId: string
 }
 
 interface EditAnswerUseCaseResponse {
@@ -17,24 +17,23 @@ export class EditAnswerUseCase {
   async execute({
     answerId,
     content,
-    authorId
+    authorId,
   }: EditAnswerUseCaseRequest): Promise<EditAnswerUseCaseResponse> {
-
-    const answer = await this.answerRepository.findById(answerId);
+    const answer = await this.answerRepository.findById(answerId)
 
     if (!answer) {
-      throw new Error("Answer not found.")
+      throw new Error('Answer not found.')
     }
 
     if (authorId !== answer.authorId.toString()) {
-      throw new Error("Unauthorized")
+      throw new Error('Unauthorized')
     }
 
-    answer.content = content;
+    answer.content = content
 
     await this.answerRepository.save(answer)
     return {
-      answer
+      answer,
     }
   }
 }
